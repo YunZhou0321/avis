@@ -1,7 +1,7 @@
 # Audio-Visual Instance Segmentation
 
 
-[![AVIS](https://img.shields.io/badge/Paper-AVIS-2b9348.svg?logo=arXiv)](https://arxiv.org/abs/2412.03069)
+[![AVIS](https://img.shields.io/badge/Paper-AVIS-2b9348.svg?logo=arXiv)](https://arxiv.org/abs/2310.18709)
 [![Project Page](https://img.shields.io/badge/Project_page-Visualizations-blue)](https://ruohaoguo.github.io/avis/)
 [![Dataset](https://img.shields.io/badge/Dataset-Download-yellow)](https://1drv.ms/u/c/3c9af704fb61931d/EVOs609SGMxLsbvVzVJHAa4Bmnu4GVZGjqYHQxDz0NKTew?e=WQU2Uf)
 
