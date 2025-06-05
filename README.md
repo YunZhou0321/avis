@@ -9,7 +9,7 @@ Ruohao Guo, Xianghua Ying*, Yaru Chen, Dantong Niu, Guangyao Li, Liao Qu, Yanyu 
 
 ## 📰 News
 
-🔥**2025.03.01**: Codes and checkpoints are released!
+🔥**2025.03.01**: Code and checkpoints are released!
 
 🔥**2025.02.27**: AVIS got accepted to **CVPR 2025**! 🎉🎉🎉
 
