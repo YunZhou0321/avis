@@ -9,6 +9,7 @@ arXiv: https://arxiv.org/abs/2511.19426
 - [ ] Update the paper
 
 ## ⚙️ Installation
+### 1.Install SAM3D
 ```bash
 conda env create -f environments/default.yml
 conda activate ref-sam3d
@@ -26,12 +27,19 @@ pip install -e '.[inference]'
 
 # patch things that aren't yet in official pip packages
 ./patching/hydra # https://github.com/facebookresearch/hydra/pull/2863
+```
 
-# get checkpoints
-'''
-⚠️ Before using SAM 3D Objects, please request access to the checkpoints on the SAM 3D Objects Hugging Face repo. Once accepted, you need to be authenticated to download the checkpoints. You can do this by running the following steps (e.g. hf auth login after generating an access token).
+### 2.Getting Checkpoints
+
+⚠️ Before using SAM 3D Objects, please request access to the checkpoints on the SAM 3D Objects
+Hugging Face [repo](https://huggingface.co/facebook/sam-3d-objects). Once accepted, you
+need to be authenticated to download the checkpoints. You can do this by running
+the following [steps](https://huggingface.co/docs/huggingface_hub/en/quick-start#authentication)
+(e.g. `hf auth login` after generating an access token).
+
+```bash
 pip install 'huggingface-hub[cli]<1.0'
-'''
+
 
 TAG=hf
 hf download \
@@ -41,29 +49,50 @@ hf download \
   facebook/sam-3d-objects
 mv checkpoints/${TAG}-download/checkpoints checkpoints/${TAG}
 rm -rf checkpoints/${TAG}-download
+```
+### 3.install sam3
 
-# install sam3
-'''
-⚠️ Before using SAM 3, please request access to the checkpoints on the SAM 3
-Hugging Face [repo](https://huggingface.co/facebook/sam3). Once accepted, you
+#⚠️ Before using SAM 3, please request access to the checkpoints on the SAM 3Hugging Face [repo](https://huggingface.co/facebook/sam3). 
+Once accepted, you
 need to be authenticated to download the checkpoints. You can do this by running
 the following [steps](https://huggingface.co/docs/huggingface_hub/en/quick-start#authentication)
 (e.g. `hf auth login` after generating an access token.)
+```bash
 git clone https://github.com/facebookresearch/sam3.git
-'''
+
 cd sam3
 pip install -e .
 pip install -e ".[notebooks]"
 
 ```
+
 ## 📌 Getting Started
 ### Setup vLLM server 
 This step is only required if you are using a model served by vLLM, skip this step if you are calling LLM using an API like Gemini and GPT.
 
 * Install vLLM (in a separate conda env from SAM 3 to avoid dependency conflicts).
-    conda create -n vllm python=3.12
-    pip install vllm --extra-index-url https://download.pytorch.org/whl/cu128
+```bash
+conda create -n vllm python=3.12
+pip install vllm --extra-index-url https://download.pytorch.org/whl/cu128
+```
 * Start vLLM server on the same machine
-    vllm serve Qwen/Qwen3-VL-4B-Instruct-FP8 --tensor-parallel-size 2 --allowed-local-media-path / --enforce-eager --port 8001
+```bash
+vllm serve Qwen/Qwen3-VL-4B-Instruct-FP8 --tensor-parallel-size 2 --allowed-local-media-path / --enforce-eager --port 8001
+```
 
 ### Run inference code
+```bash
+python inference_pipeline.py --image_path <path_to_image_file> --prompt "<your_text_prompt>" --output_dir <output_dir> --model <llm_model_name> --vllm_port <vllm_server_port>
+```
+The model's predictions and 3D reconstruction results will be saved in the output/ directory with the following structure:
+```bash
+output/
+└── <image_name>/                 
+    └── <prompt_text>/         
+        ├── splat.ply              
+        ├── mask_xxx.png           
+        ├── agent_debug_out/       
+        ├── none_out/             
+        ├── sam_out/               
+        └── ...
+```    
