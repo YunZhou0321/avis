@@ -9,7 +9,7 @@ arXiv: https://arxiv.org/abs/2511.19426
 - [ ] Update the paper
 
 ## ⚙️ Installation
-### 1.Install SAM3D
+### 1.Installing SAM3D
 ```bash
 conda env create -f environments/default.yml
 conda activate ref-sam3d
@@ -50,7 +50,7 @@ hf download \
 mv checkpoints/${TAG}-download/checkpoints checkpoints/${TAG}
 rm -rf checkpoints/${TAG}-download
 ```
-### 3.install sam3
+### 3.Installing sam3
 
 #⚠️ Before using SAM 3, please request access to the checkpoints on the SAM 3Hugging Face [repo](https://huggingface.co/facebook/sam3). 
 Once accepted, you
@@ -82,7 +82,7 @@ vllm serve Qwen/Qwen3-VL-4B-Instruct-FP8 --tensor-parallel-size 2 --allowed-loca
 
 ### Run inference code
 ```bash
-python inference_pipeline.py --image_path <path_to_image_file> --prompt "<your_text_prompt>" --output_dir <output_dir> --model <llm_model_name> --vllm_port <vllm_server_port>
+python inference_pipeline.py --image_path <path_to_image_file> --prompt "<your_text_prompt>" --model <llm_model_name> --vllm_port <vllm_server_port>
 ```
 The model's predictions and 3D reconstruction results will be saved in the output/ directory with the following structure:
 ```bash
@@ -96,3 +96,9 @@ output/
         ├── sam_out/               
         └── ...
 ```    
+### Visualization
+To visualize the results, run the following command. This will launch a local Gradio interface where you can view the 3D model:
+```bash     
+python vis.py --ply_path <path_to_ply_file>
+```
+
