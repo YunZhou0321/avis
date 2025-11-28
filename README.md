@@ -50,7 +50,7 @@ hf download \
 mv checkpoints/${TAG}-download/checkpoints checkpoints/${TAG}
 rm -rf checkpoints/${TAG}-download
 ```
-### 3.Installing sam3
+### 3.Installing SAM 3
 
 ⚠️ Before using SAM 3, please request access to the checkpoints on the SAM3 Hugging Face [repo](https://huggingface.co/facebook/sam3). 
 Once accepted, you
