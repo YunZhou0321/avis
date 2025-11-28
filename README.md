@@ -52,7 +52,7 @@ rm -rf checkpoints/${TAG}-download
 ```
 ### 3.Installing sam3
 
-#⚠️ Before using SAM 3, please request access to the checkpoints on the SAM 3Hugging Face [repo](https://huggingface.co/facebook/sam3). 
+⚠️ Before using SAM 3, please request access to the checkpoints on the SAM3 Hugging Face [repo](https://huggingface.co/facebook/sam3). 
 Once accepted, you
 need to be authenticated to download the checkpoints. You can do this by running
 the following [steps](https://huggingface.co/docs/huggingface_hub/en/quick-start#authentication)
